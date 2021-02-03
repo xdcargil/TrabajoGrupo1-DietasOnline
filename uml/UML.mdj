@@ -186,7 +186,7 @@
 											"top": 371,
 											"width": 191,
 											"height": 13,
-											"text": "-Pacientes: Cliente",
+											"text": "-Pacientes[]: Cliente",
 											"horizontalAlignment": 0
 										}
 									],
@@ -3189,7 +3189,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF3aOAiwEwhmR8="
 							},
-							"name": "Pacientes",
+							"name": "Pacientes[]",
 							"visibility": "private",
 							"type": {
 								"$ref": "AAAAAAF3aOA7QUxLvOo="
