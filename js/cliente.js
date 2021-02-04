@@ -39,9 +39,9 @@ class Cliente {
   // Métodos
   toHTMLRow() {
     let sFila = "<tr>";
-    sFila += "<td>" + this.nombre + "</td>";
-    sFila += "<td>" + this.apellidos + "</td>";
-    sFila += "<td>" + this.DNI + "</td>";
+    sFila += "<td>" + this.getNombre() + "</td>";
+    sFila += "<td>" + this.getApellidos() + "</td>";
+    sFila += "<td>" + this.getDNI() + "</td>";
     sFila += "</tr>";
 
     return sFila;
