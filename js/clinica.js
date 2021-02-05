@@ -35,7 +35,19 @@ class Clinica
     }
     altaCliente(oCliente) //Se pasa un objeto cliente
     {
+        let oClienteExistente = null;
 
+        oClienteExistente = this._buscarCliente(oCliente.dni);
+
+        if(oClienteExistente==null)
+        {
+            this.cliente.push(oCliente);
+            alert("Alta de cliente realizada");
+        }
+        else
+        {
+            alert("Ya hay una persona con ese dni");
+        }
     }
     bajaCliente(oCliente) //Se pasa un objeto cliente
     {
@@ -56,5 +68,12 @@ class Clinica
     bajaDieta(oDieta) //Se pasa un objeto dieta
     {
 
+
+    }
+    _buscarCliente(sDni)
+    {
+        let oClienteExistente= null;
+        oClienteExistente=this.cliente.find(oC => oC.dni==sDni);
+        return oClienteExistente;
     }
 }
