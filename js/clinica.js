@@ -76,7 +76,7 @@ class Clinica
 
         if(oDietistaExistente==null)
         {
-            this.dietas.push(oDietista);
+            this.dietistas.push(oDietista);
             alert("Alta de dietista realizada");
         }
         else
@@ -108,9 +108,36 @@ class Clinica
     altaDieta(oDieta) //Se pasa un objeto dieta
     {
 
+        let oDietaExistente = null;
+
+        oDietaExistente = this._buscarDieta(oDieta.id_dieta);
+
+        if(oDietaExistente==null)
+        {
+            this.dietas.push(oDieta);
+            alert("Alta de dietista realizada");
+        }
+        else
+        {
+            alert("Ya hay una persona con ese dni");
+        }
     }
     bajaDieta(oDieta) //Se pasa un objeto dieta
     {
+        let oDietaExistente = null;
+
+        oDietaExistente = this._buscarDieta(oDieta.id_dieta);
+
+        if (oDietaExistente == null) {
+            return 0; // 0 si no encuentra el objeto
+        }
+        else 
+        {
+                    console.log(oDieta.id_dieta);
+                    let posicion = this.posicionArrayDieta(oDieta.id_dieta);
+                    this.dietas.splice(posicion, 1);
+                    console.log(this.dietas);
+        }
 
 
     }
@@ -126,6 +153,12 @@ class Clinica
         let oDietistaExistente= null;
         oDietistaExistente=this.dietistas.find(oC => oC.dni==sDni);
         return oDietistaExistente;
+    }
+    _buscarDieta(idDieta)
+    {
+        let oDietaExistente= null;
+        oDietaExistente=this.dietas.find(oD => oD.id_dieta==idDieta);
+        return oDietaExistente;
     }
 
     posicionArrayCliente(sDni) {
@@ -143,6 +176,17 @@ class Clinica
         console.log("as");
         for (let i = 0; i < this.dietistas.length; i++) {
             if (this.dietistas[i].dni == sDni) {
+                return i;
+                console.log(i);
+            }
+        }
+
+    }
+
+    posicionArrayDieta(idDieta) {
+        console.log("as");
+        for (let i = 0; i < this.dietas.length; i++) {
+            if (this.dietas[i].id_dieta == idDieta) {
                 return i;
                 console.log(i);
             }
