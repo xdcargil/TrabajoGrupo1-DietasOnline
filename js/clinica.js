@@ -51,10 +51,24 @@ class Clinica
     }
     bajaCliente(oCliente) //Se pasa un objeto cliente
     {
-
+        
     }
     altaDietista(oDietista) //Se pasa un objeto dietista
     {
+
+        let oDietistaExistente = null;
+
+        oDietistaExistente = this._buscarDietista(oDietista.dni);
+
+        if(oDietistaExistente==null)
+        {
+            this.dietas.push(oDietista);
+            alert("Alta de dietista realizada");
+        }
+        else
+        {
+            alert("Ya hay una persona con ese dni");
+        }
 
     }
     bajaDietista(oDietista) //Se pasa un objeto dietista
@@ -76,4 +90,12 @@ class Clinica
         oClienteExistente=this.cliente.find(oC => oC.dni==sDni);
         return oClienteExistente;
     }
+
+    _buscarDietista(sDni)
+    {
+        let oDietistaExistente= null;
+        oDietistaExistente=this.dietistas.find(oC => oC.dni==sDni);
+        return oDietistaExistente;
+    }
+
 }
