@@ -51,7 +51,21 @@ class Clinica
     }
     bajaCliente(oCliente) //Se pasa un objeto cliente
     {
-        
+        let oClienteExistente = null;
+
+        oClienteExistente = this._buscarCliente(oCliente.dni);
+
+        if (oClienteExistente == null) {
+            return 0; // 0 si no encuentra el objeto
+        }
+        else 
+        {
+                    console.log(oClienteExistente.dni);
+                    let posicion = this.posicionArrayCliente(oClienteExistente.dni);
+                    this.cliente.splice(posicion, 1);
+                    console.log(this.cliente);
+        }
+
     }
     altaDietista(oDietista) //Se pasa un objeto dietista
     {
@@ -73,6 +87,22 @@ class Clinica
     }
     bajaDietista(oDietista) //Se pasa un objeto dietista
     {
+
+        let oDietistaExistente = null;
+
+        oDietistaExistente = this._buscarDietista(oDietista.dni);
+
+        if (oDietistaExistente == null) {
+            return 0; // 0 si no encuentra el objeto
+        }
+        else 
+        {
+                    console.log(oDietistaExistente.dni);
+                    let posicion = this.posicionArrayDietista(oDietistaExistente.dni);
+                    this.dietistas.splice(posicion, 1);
+                    console.log(this.dietistas);
+        }
+
 
     }
     altaDieta(oDieta) //Se pasa un objeto dieta
@@ -96,6 +126,28 @@ class Clinica
         let oDietistaExistente= null;
         oDietistaExistente=this.dietistas.find(oC => oC.dni==sDni);
         return oDietistaExistente;
+    }
+
+    posicionArrayCliente(sDni) {
+        console.log("as");
+        for (let i = 0; i < this.cliente.length; i++) {
+            if (this.cliente[i].dni == sDni) {
+                return i;
+                console.log(i);
+            }
+        }
+
+    }
+
+    posicionArrayDietista(sDni) {
+        console.log("as");
+        for (let i = 0; i < this.dietistas.length; i++) {
+            if (this.dietistas[i].dni == sDni) {
+                return i;
+                console.log(i);
+            }
+        }
+
     }
 
 }
