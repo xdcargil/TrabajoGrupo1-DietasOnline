@@ -1,18 +1,31 @@
 'use strict';
-
-class Clinica
-{
-    constructor(nombre_clinica)
-    {
-        this.nombre_clinica=nombre_clinica;
-        this.dietistas=[];
-        this.cliente=[];
-        this.dietas=[];
+class Clinica {
+    constructor(nombre_clinica) {
+        this.nombre_clinica = nombre_clinica;
+        this.dietistas = [];
+        this.cliente = [];
+        this.dietas = [];
     }
+    
+    llenarCliente(){
+        let cliente = new Cliente("nombre","apellidos",32)
+        let cliente2 = new Cliente("nombre2","apellidos2",33)
+        let cliente3 = new Cliente("nombre3","apellidos3",34)
+
+        this.cliente.push(cliente);
+        this.cliente.push(cliente2);
+        this.cliente.push(cliente3);
+
+    }
+
     listarClientes() //Lista todos los clientes
     {
-
+        if (this.cliente.length > 0) 
+            return this.cliente;
+         else 
+            return "no hay clientes"
     }
+
     listaClienteEspecifico(oCliente) //Se pasa un valor String (DNI del Cliente)
     {
 
@@ -39,13 +52,11 @@ class Clinica
 
         oClienteExistente = this._buscarCliente(oCliente.dni);
 
-        if(oClienteExistente==null)
-        {
+        if (oClienteExistente == null) {
             this.cliente.push(oCliente);
             alert("Alta de cliente realizada");
         }
-        else
-        {
+        else {
             alert("Ya hay una persona con ese dni");
         }
     }
@@ -58,12 +69,11 @@ class Clinica
         if (oClienteExistente == null) {
             return 0; // 0 si no encuentra el objeto
         }
-        else 
-        {
-                    console.log(oClienteExistente.dni);
-                    let posicion = this.posicionArrayCliente(oClienteExistente.dni);
-                    this.cliente.splice(posicion, 1);
-                    console.log(this.cliente);
+        else {
+            console.log(oClienteExistente.dni);
+            let posicion = this.posicionArrayCliente(oClienteExistente.dni);
+            this.cliente.splice(posicion, 1);
+            console.log(this.cliente);
         }
 
     }
@@ -74,13 +84,11 @@ class Clinica
 
         oDietistaExistente = this._buscarDietista(oDietista.dni);
 
-        if(oDietistaExistente==null)
-        {
+        if (oDietistaExistente == null) {
             this.dietistas.push(oDietista);
             alert("Alta de dietista realizada");
         }
-        else
-        {
+        else {
             alert("Ya hay una persona con ese dni");
         }
 
@@ -95,12 +103,11 @@ class Clinica
         if (oDietistaExistente == null) {
             return 0; // 0 si no encuentra el objeto
         }
-        else 
-        {
-                    console.log(oDietistaExistente.dni);
-                    let posicion = this.posicionArrayDietista(oDietistaExistente.dni);
-                    this.dietistas.splice(posicion, 1);
-                    console.log(this.dietistas);
+        else {
+            console.log(oDietistaExistente.dni);
+            let posicion = this.posicionArrayDietista(oDietistaExistente.dni);
+            this.dietistas.splice(posicion, 1);
+            console.log(this.dietistas);
         }
 
 
@@ -112,13 +119,11 @@ class Clinica
 
         oDietaExistente = this._buscarDieta(oDieta.id_dieta);
 
-        if(oDietaExistente==null)
-        {
+        if (oDietaExistente == null) {
             this.dietas.push(oDieta);
             alert("Alta de dietista realizada");
         }
-        else
-        {
+        else {
             alert("Ya hay una persona con ese dni");
         }
     }
@@ -131,33 +136,29 @@ class Clinica
         if (oDietaExistente == null) {
             return 0; // 0 si no encuentra el objeto
         }
-        else 
-        {
-                    console.log(oDieta.id_dieta);
-                    let posicion = this.posicionArrayDieta(oDieta.id_dieta);
-                    this.dietas.splice(posicion, 1);
-                    console.log(this.dietas);
+        else {
+            console.log(oDieta.id_dieta);
+            let posicion = this.posicionArrayDieta(oDieta.id_dieta);
+            this.dietas.splice(posicion, 1);
+            console.log(this.dietas);
         }
 
 
     }
-    _buscarCliente(sDni)
-    {
-        let oClienteExistente= null;
-        oClienteExistente=this.cliente.find(oC => oC.dni==sDni);
+    _buscarCliente(sDni) {
+        let oClienteExistente = null;
+        oClienteExistente = this.cliente.find(oC => oC.dni == sDni);
         return oClienteExistente;
     }
 
-    _buscarDietista(sDni)
-    {
-        let oDietistaExistente= null;
-        oDietistaExistente=this.dietistas.find(oC => oC.dni==sDni);
+    _buscarDietista(sDni) {
+        let oDietistaExistente = null;
+        oDietistaExistente = this.dietistas.find(oC => oC.dni == sDni);
         return oDietistaExistente;
     }
-    _buscarDieta(idDieta)
-    {
-        let oDietaExistente= null;
-        oDietaExistente=this.dietas.find(oD => oD.id_dieta==idDieta);
+    _buscarDieta(idDieta) {
+        let oDietaExistente = null;
+        oDietaExistente = this.dietas.find(oD => oD.id_dieta == idDieta);
         return oDietaExistente;
     }
 
