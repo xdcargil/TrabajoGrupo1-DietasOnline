@@ -1,6 +1,6 @@
 /*Miguel*/
 
-class dietaxcliente {
+class Dietaxcliente {
     constructor(id, cliente, dieta, estado) {
 
         this.id = id;

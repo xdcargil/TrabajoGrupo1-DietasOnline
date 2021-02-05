@@ -2,7 +2,7 @@
 
 'use strict';
 
-class dieta
+class Dieta
 {
     constructor(nombre_dieta, duracion_dieta,tratamiento_dieta,id_dieta)
     {
