@@ -41,4 +41,20 @@ class Clinica
     {
 
     }
+    altaDietista(oDietista) //Se pasa un objeto dietista
+    {
+
+    }
+    bajaDietista(oDietista) //Se pasa un objeto dietista
+    {
+
+    }
+    altaDieta(oDieta) //Se pasa un objeto dieta
+    {
+
+    }
+    bajaDieta(oDieta) //Se pasa un objeto dieta
+    {
+
+    }
 }
