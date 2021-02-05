@@ -1,6 +1,6 @@
 "use strict";
 //Creamos el objeto tienda para añadirle datos posteriormente
-let clinica = new clinica();
+let clinica = new Clinica();
 
 /*-------------------------EVENTSLISTENERS----------------------------------------------*/
 
