@@ -138,15 +138,14 @@ function mostrarListado2() {
     formularioBaja.style.display = "none";
 
     let listado2 = document.getElementById('listado2');
-
-
+    console.log(listado2.firstChild)
     if (listado2.style.display == "block") {
         listado2.style.display = "none";
     }
     else {
         listado2.style.display = "block";
-        //listado2.removeChild(listado2.lastChild);
-
+        listado2.removeChild(listado2.lastChild);
+        listarDietas();
     }
 }
 
@@ -227,8 +226,33 @@ function listarClientes() {
     var insertar = document.getElementById("listado1"); //
 
     if (aDatosClientes.length > 0) {
+
         var tabla = document.createElement("table");
+
+        //encabezado
+
+        var tbThead = document.createElement("thead");
+        let trEncabezado = document.createElement("tr");
+
+        let thEncabezadoNombre = document.createElement("th");
+        let thEncabezadoApellidos = document.createElement("th");
+        let thEncabezadoDNI = document.createElement("th");
+
+        var textoEncabezadoNombre = document.createTextNode("Nombre"); //Texto para Nombre
+        var textoEncabezadoApellidos = document.createTextNode("Apellidos"); //Texto para Apellidos
+        var textoEncabezadoDNI = document.createTextNode("DNI"); //Texto para DNI
+
+        thEncabezadoNombre.appendChild(textoEncabezadoNombre);
+        thEncabezadoApellidos.appendChild(textoEncabezadoApellidos);
+        thEncabezadoDNI.appendChild(textoEncabezadoDNI);
+
+        trEncabezado.appendChild(thEncabezadoNombre);
+        trEncabezado.appendChild(thEncabezadoApellidos);
+        trEncabezado.appendChild(thEncabezadoDNI);
+
         var tblBody = document.createElement("tbody");
+        tbThead.appendChild(trEncabezado);
+        tabla.appendChild(tbThead);
 
         aDatosClientes.forEach(element => {
 
@@ -268,8 +292,74 @@ function listarClientes() {
 //Mostrar listado dietas
 
 function listarDietas() {
-    let dietas = clinica.listarDietas();
-    let contenedor = document.getElementById('');
+    let arrayDietas = clinica.listarDietas();
+    let insertar = document.getElementById('listado2');
+
+    var tbThead = document.createElement("thead");
+    let trEncabezado = document.createElement("tr");
+
+    let thEncabezadoNombreDieta = document.createElement("th");
+    let thEncabezadoDuracionDieta = document.createElement("th");
+    let thEncabezadoTratamiento = document.createElement("th");
+    let thEncabezadoIdDieta = document.createElement("th");
+
+    var textoEncabezadoNombreDieta = document.createTextNode("Nombre Dieta");
+    var textoEncabezadoDuracion = document.createTextNode("Duracion"); 
+    var textoEncabezadoTratamiento = document.createTextNode("Tratamiento"); 
+    var textoEncabezadoID= document.createTextNode("ID"); 
+
+    thEncabezadoNombreDieta.appendChild(textoEncabezadoNombreDieta);
+    thEncabezadoDuracionDieta.appendChild(textoEncabezadoDuracion);
+    thEncabezadoTratamiento.appendChild(textoEncabezadoTratamiento);
+    thEncabezadoIdDieta.appendChild(textoEncabezadoID);
+
+    trEncabezado.appendChild(thEncabezadoNombreDieta);
+    trEncabezado.appendChild(thEncabezadoDuracionDieta);
+    trEncabezado.appendChild(thEncabezadoTratamiento);
+    trEncabezado.appendChild(thEncabezadoIdDieta);
+    
+    var tabla = document.createElement("table");
+    var tblBody = document.createElement("tbody");
+
+    var tblBody = document.createElement("tbody");
+    tbThead.appendChild(trEncabezado);
+    tabla.appendChild(tbThead);
+
+    if (arrayDietas.length > 0) {
+
+        arrayDietas.forEach(element => {
+
+            let tr = document.createElement("tr");
+
+            var celda1 = document.createElement("td"); //TD para Nombre Dieta
+            var celda2 = document.createElement("td"); //TD para Duracion Dieta
+            var celda3 = document.createElement("td"); //TD para Tratamiento Dieta
+            var celda4 = document.createElement("td"); //TD para ID Dieta
+
+            var textoCeldaNombreDieta = document.createTextNode(element.getNombreDieta()); //Texto para Nombre Dieta
+            var textoCeldaDuracion = document.createTextNode(element.getDuracionDieta()); //Texto para Duracion Dieta
+            var textoCeldaTratamiento = document.createTextNode(element.getTratamientoDieta()); //Texto para Tratamiento Dieta
+            var textoCeldaIdDieta = document.createTextNode(element.getTratamientoDieta()); //Texto para ID Dieta
+
+
+            celda1.appendChild(textoCeldaNombreDieta);
+            celda2.appendChild(textoCeldaDuracion);
+            celda3.appendChild(textoCeldaTratamiento);
+            celda4.appendChild(textoCeldaIdDieta);
+
+            tr.appendChild(celda1);
+            tr.appendChild(celda2);
+            tr.appendChild(celda3);
+            tr.appendChild(celda4);
+
+            tblBody.appendChild(tr);
+
+        });
+
+        tabla.appendChild(tblBody);
+        insertar.appendChild(tabla);
+        tabla.setAttribute("border", "2");
+    }
 }
 
 //Llamada a la Función de Ocultar Formularios.
