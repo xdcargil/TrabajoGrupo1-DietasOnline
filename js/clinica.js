@@ -66,7 +66,7 @@ class Clinica {
     {
         let oClienteExistente = null;
 
-        oClienteExistente = this._buscarCliente(oCliente.dni);
+        oClienteExistente = this._buscarCliente(oCliente.DNI);
 
         if (oClienteExistente == null) {
             this.cliente.push(oCliente);
@@ -80,7 +80,7 @@ class Clinica {
     {
         let oClienteExistente = null;
 
-        oClienteExistente = this._buscarCliente(oCliente.dni);
+        oClienteExistente = this._buscarCliente(oCliente.DNI);
 
         if (oClienteExistente == null) {
             return 0; // 0 si no encuentra el objeto
@@ -163,7 +163,7 @@ class Clinica {
     }
     _buscarCliente(sDni) {
         let oClienteExistente = null;
-        oClienteExistente = this.cliente.find(oC => oC.dni == sDni);
+        oClienteExistente = this.cliente.find(oC => oC.DNI == sDni);
         return oClienteExistente;
     }
 
