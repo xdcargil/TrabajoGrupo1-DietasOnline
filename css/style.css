@@ -28,3 +28,7 @@ form{
 form label{
     font-size: 17px;
 }
+
+.error {
+    background-color:yellow;
+    }
