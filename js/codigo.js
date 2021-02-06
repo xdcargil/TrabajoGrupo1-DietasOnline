@@ -268,4 +268,3 @@ function cargarDatos(){
 
     alert("Se han cargado los datos correctamente.");
 }
-
