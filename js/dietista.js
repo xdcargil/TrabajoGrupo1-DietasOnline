@@ -1,5 +1,4 @@
 /*JESUS*/
-
 class Dietista{
 
     constructor(nombre, apellidos, dni){
