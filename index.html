@@ -28,9 +28,9 @@
 
     <div class="row">
       <div class="col-md-2">
-        <button type="button" class="btn btn-primary btn-lg" id="botonListado1">Mostrar clientes</button>
-        <button type="button" class="btn btn-primary btn-lg" id="botonListado2">Mostrar dietas</button>
-        <button type="button" class="btn btn-primary btn-lg" id="botonListado3">Filtrar</button>
+        <button type="button" class="btn btn-primary btn-lg botonFormulario" id="botonListado1">Mostrar clientes</button>
+        <button type="button" class="btn btn-primary btn-lg botonFormulario" id="botonListado2">Mostrar dietas</button>
+        <button type="button" class="btn btn-primary btn-lg botonFormulario" id="botonListado3">Filtrar</button>
 
       </div>
 
@@ -50,7 +50,7 @@
 
         <div id="listado3" class="listado">aaaaa
         </div>
-
+   
       </div>
     </div>
 
@@ -61,13 +61,27 @@
     <div class="row">
       <div class="col-md-2">
         <div id="botonesFormulario">  <!--Formulario BOTONES-->
-          <button type="button" class="btn btn-primary btn-lg" id="altaCliente">Alta Cliente</button>
-          <button type="button" class="btn btn-primary btn-lg" id="bajaCliente">Baja Cliente</button>
+          <button type="button" class="btn btn-primary btn-lg botonFormulario" id="altaCliente">Alta Cliente</button>
+          <button type="button" class="btn btn-primary btn-lg botonFormulario" id="bajaCliente">Baja Cliente</button>
         </div>
 
       </div>
+      
       <div class="col-md-10">     <!--Formularios -->
         <div class="container">
+
+          <div id="formularioBaja" >
+            <form>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="dni">DNI</label>
+                  <input type="text" class="form-control" id="DNI">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-outline-primary">Enviar</button>
+            </form>  
+        </div>
+
           <div id="formularioAlta">
             <form>
               <div class="form-row">
@@ -87,20 +101,12 @@
                 <input type="text" class="form-control" id="DNI">
               </div>
 
-              <button type="submit" class="btn btn-outline-primary btn-lg btn-block">Enviar</button>
+              <button type="submit" class="btn btn-outline-primary ">Enviar</button>
             </form>
           </div>
 
-        </div>
       </div>
 
-      <div class="col-md-10">     <!--Formularios -->
-        <div class="container">
-          <div id="formularioBaja">
-            asdasdasd
-          </div>
-
-        </div>
       </div>
 
     </div>
