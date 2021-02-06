@@ -1,5 +1,4 @@
 /*JOSE*/
-
 'use strict';
 
 class Dieta
