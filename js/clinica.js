@@ -1,4 +1,5 @@
 'use strict';
+
 class Clinica {
     constructor(nombre_clinica) {
         this.nombre_clinica = nombre_clinica;
