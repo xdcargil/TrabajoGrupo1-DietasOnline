@@ -328,7 +328,7 @@ function loadXMLDoc(filename) {
 function cargarDatos() {
 
 
-    var oXML = loadXMLDoc("../clinica.xml");
+    var oXML = loadXMLDoc("clinica.xml");
     var oDietas = oXML.getElementsByTagName("dieta");
     var oClientes = oXML.getElementsByTagName("cliente");
     var oDietistas = oXML.getElementsByTagName("dietista");
