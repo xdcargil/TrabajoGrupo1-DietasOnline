@@ -1,5 +1,4 @@
 "use strict";
-//Creamos el objeto tienda para añadirle datos posteriormente
 let clinica = new Clinica();
 
 cargarDatos();
