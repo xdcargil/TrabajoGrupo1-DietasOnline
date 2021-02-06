@@ -1,5 +1,4 @@
 "use strict";
-
 class Cliente {
   // Constructor de atributos
   constructor(nombre, apellidos, DNI) {

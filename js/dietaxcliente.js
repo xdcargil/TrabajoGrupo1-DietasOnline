@@ -1,5 +1,4 @@
 /*Miguel*/
-
 class Dietaxcliente {
     constructor(id, cliente, dieta, estado) {
 
