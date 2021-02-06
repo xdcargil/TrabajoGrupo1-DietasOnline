@@ -3,14 +3,13 @@
     margin: 0px;
     padding: 0px;
 }
+.listado{
 
-
-#botonesFormulario{
-    padding: 15px;
-    margin-top: 25px;
+    margin-top: 5%;
+   
 }
 
-#botonesFormulario button{
+.botonFormulario{
     padding: 15px;
     margin-top: 25px;
     padding-right: 25px;
@@ -18,9 +17,8 @@
     text-align: center;
     border-radius: 5%;
     width: 150px;
-    height: 120px;     
+    height: 120px; 
 }
-
 form{
     margin-top: 5%;
     width: 75%;
@@ -30,3 +28,7 @@ form{
 form label{
     font-size: 17px;
 }
+
+.error {
+    background-color:yellow;
+    }
