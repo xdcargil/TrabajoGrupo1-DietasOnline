@@ -4,23 +4,71 @@ let clinica = new Clinica();
 
 clinica.llenarCliente();
 
-
-listarClientes();
 /*-------------------------EVENTSLISTENERS----------------------------------------------*/
 
-document.getElementById("prueba").addEventListener("click", prueba);
+var botonListado1 = document.getElementById('botonListado1');
+botonListado1.addEventListener("click", mostrarListado1);
 
-function prueba() {
-    document.getElementById("prueba").style.display = "block";
-    alert('hola');
+
+var botonListado2 = document.getElementById('botonListado2');
+botonListado2.addEventListener("click", mostrarListado2);
+
+var botonListado3 = document.getElementById('botonListado3');
+botonListado3.addEventListener("click", mostrarListado3);
+//bug miguel
+function mostrarListado1(){
+    
+    let listado1 = document.getElementById('listado1');
+
+
+    if(listado1.style.display=="block"){
+        listado1.style.display = "none";
+    }
+    else{
+        listado1.style.display = "block";
+        listado1.removeChild(listado1.lastChild);
+        listarClientes();
+    }
 }
+
+function mostrarListado2(){
+    
+    let listado2 = document.getElementById('listado2');
+
+
+    if(listado2.style.display=="block"){
+        listado2.style.display = "none";
+    }
+    else{
+        listado2.style.display = "block";
+        //listado2.removeChild(listado2.lastChild);
+        
+    }
+}
+
+
+function mostrarListado3(){
+    
+    let listado3 = document.getElementById('listado3');
+
+
+    if(listado3.style.display=="block"){
+        listado3.style.display = "none";
+    }
+    else{
+        listado3.style.display = "block";
+        //listado2.removeChild(listado2.lastChild);
+        
+    }
+}
+
 //Mostrar lista Cliente
 function listaClienteEspecifico(DNI) {
 
     let cliente = clinica.listaClienteEspecifico(DNI);
 
     if (typeof cliente === "object") {
-        var insertar = document.getElementById("test"); //
+        var insertar = document.getElementById("listado1"); //
 
 
         var tabla = document.createElement("table");
@@ -60,17 +108,17 @@ function listaClienteEspecifico(DNI) {
 }
 
 //Mostrar Listado Clientes
-function listarClientes() {
+function listarClientes(){
     let aDatosClientes = clinica.listarClientes();
-    var insertar = document.getElementById("test"); //
+    var insertar = document.getElementById("listado1"); //
 
-    if (aDatosClientes.length > 0) {
-        var tabla = document.createElement("table");
+    if(aDatosClientes.length>0){
+        var tabla   = document.createElement("table");
         var tblBody = document.createElement("tbody");
-
+    
         aDatosClientes.forEach(element => {
 
-            let tr = document.createElement("tr");
+            let tr=document.createElement("tr");
 
             var celda1 = document.createElement("td"); //TD para Nombre
             var celda2 = document.createElement("td"); //TD para Apellidos
@@ -96,19 +144,19 @@ function listarClientes() {
         tabla.appendChild(tblBody);
         insertar.appendChild(tabla);
         tabla.setAttribute("border", "2");
-
-    } else {
+    
+    }else{
         alert("No hay clientes");
     }
 }
 
 
-//Mostrar listado dietas
+    //Mostrar listado dietas
 
-function listarDietas() {
-    let dietas = clinica.listarDietas();
-    let contenedor = document.getElementById('');
-}
+    function listarDietas(){
+        let dietas = clinica.listarDietas();
+        let contenedor = document.getElementById('');
+    }
 
 //Llamada a la Función de Ocultar Formularios.
 ocultarFormularios();
@@ -134,28 +182,89 @@ function limpiarInputs(inputs) {
 
 
 
-//Registrar Cliente
 
-function altaCliente() {
 
-    /*let formulario = document.getElementById("formAdministracionUsuario");
-    let inputs = form.getElementsByTagName("input");
 
-    let sNombre = inputs[0].value;
-    let sApellidos = inputs[1].value;
-    let dFecha = inputs[2].value;
-    let sEmail = inputs[3].value;
-    iContadorCliente++;
-*/
-    let cliente = new Cliente(iContadorCliente, sNombre, sApellidos, dFecha, sEmail);
 
-    if (tienda.registrarCliente(usuario)) {
-        alert("Cliente dado de alta correctamente");
-        ocultarFormularios();
-    } else {
-        alert("Ya existe un cliente con ese NI");
+
+
+
+
+
+
+
+
+
+
+
+
+
+//------------------------------AÑADIDO DE DATOS CON XML----------------------------------------------//
+
+function loadXMLDoc(filename)
+{
+	if (window.XMLHttpRequest)
+	  {
+	  var xhttp=new XMLHttpRequest();
+	  }
+	else // code for IE5 and IE6
+	  {
+	  var xhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	xhttp.open("GET",filename,false);
+	
+	xhttp.send();
+	
+	return xhttp.responseXML;
+} 
+function cargarDatos(){
+
+    
+    var oXML = loadXMLDoc("../clinica.xml");
+    var oDietas = oXML.getElementsByTagName("dieta");
+    var oClientes = oXML.getElementsByTagName("cliente");
+    var oDietistas = oXML.getElementsByTagName("dietista");
+   
+    
+
+    //Introduze las dietas
+    for(var i=0; i<oDietas.length; i++){
+
+        // console.log(oJuegos[i]);
+        var nombre = oDietas[i].getElementsByTagName("nombre_dieta")[0].textContent;
+        var duracion = oDietas[i].getElementsByTagName("duracion_dieta")[0].textContent;
+        var tratamiento = oDietas[i].getElementsByTagName("tratamiento_dieta")[0].textContent;
+
+        var dieta = new Dieta(nombre, duracion, tratamiento, i);
+
+        clinica.altaDieta(dieta);
+
+    }
+    //Introduze los clientes
+
+    for(var i=0; i<oClientes.length;i++){
+
+        var nombre = oClientes[i].getElementsByTagName("nombre")[0].textContent;
+        var apellidos = oClientes[i].getElementsByTagName("apellidos")[0].textContent;
+        var dni = oClientes[i].getElementsByTagName("DNI")[0].textContent;
+
+        var cliente = new Cliente(nombre, apellidos, dni);
+
+        clinica.altaCliente(cliente);
     }
 
-    limpiarInputs(inputs);
-}
+    //Introduzco las compras
 
+    for(var i=0; i<oDietistas.length;i++){
+
+        var nombre = oDietistas[i].getElementsByTagName("nombre")[0].textContent;
+        var apellidos = oDietistas[i].getElementsByTagName("apellidos")[0].textContent;
+        var dni = oDietistas[i].getElementsByTagName("dni")[0].textContent;
+
+        var dietista =  new Dietista (nombre, apellidos, dni);
+
+        clinica.altaDietista(dietista);
+    }
+
+    alert("Se han cargado los datos correctamente.");
+}
