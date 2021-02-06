@@ -6,17 +6,6 @@ class Clinica {
         this.cliente = [];
         this.dietas = [];
     }
-    
-    llenarCliente(){
-        let cliente = new Cliente("nombre","apellidos",32)
-        let cliente2 = new Cliente("nombre2","apellidos2",33)
-        let cliente3 = new Cliente("nombre3","apellidos3",34)
-
-        this.cliente.push(cliente);
-        this.cliente.push(cliente2);
-        this.cliente.push(cliente3);
-
-    }
 
     listarClientes() //Lista todos los clientes
     {

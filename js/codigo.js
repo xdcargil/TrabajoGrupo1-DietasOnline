@@ -4,7 +4,6 @@ let clinica = new Clinica();
 
 cargarDatos();
 
-clinica.llenarCliente();
 
 /*-------------------------EVENTSLISTENERS----------------------------------------------*/
 
@@ -243,12 +242,12 @@ function cargarDatos() {
     }
     //Introduze los clientes
 
-    for (var i = 0; i < oClientes.length; i++) {
+    for (var i = 1; i < oClientes.length; i++) {
 
         var nombre = oClientes[i].getElementsByTagName("nombre")[0].textContent;
         var apellidos = oClientes[i].getElementsByTagName("apellidos")[0].textContent;
         var dni = oClientes[i].getElementsByTagName("DNI")[0].textContent;
-
+        console.log(nombre,apellidos,dni);
         var cliente = new Cliente(nombre, apellidos, dni);
 
         clinica.altaCliente(cliente);
