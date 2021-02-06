@@ -10,8 +10,8 @@ listarClientes();
 
 document.getElementById("prueba").addEventListener("click", prueba);
 
-function prueba(){
-    document.getElementById("prueba").style.display= "block";
+function prueba() {
+    document.getElementById("prueba").style.display = "block";
     alert('hola');
 }
 //Mostrar lista Cliente
@@ -60,17 +60,17 @@ function listaClienteEspecifico(DNI) {
 }
 
 //Mostrar Listado Clientes
-function listarClientes(){
+function listarClientes() {
     let aDatosClientes = clinica.listarClientes();
     var insertar = document.getElementById("test"); //
 
-    if(aDatosClientes.length>0){
-        var tabla   = document.createElement("table");
+    if (aDatosClientes.length > 0) {
+        var tabla = document.createElement("table");
         var tblBody = document.createElement("tbody");
-    
+
         aDatosClientes.forEach(element => {
 
-            let tr=document.createElement("tr");
+            let tr = document.createElement("tr");
 
             var celda1 = document.createElement("td"); //TD para Nombre
             var celda2 = document.createElement("td"); //TD para Apellidos
@@ -96,19 +96,19 @@ function listarClientes(){
         tabla.appendChild(tblBody);
         insertar.appendChild(tabla);
         tabla.setAttribute("border", "2");
-    
-    }else{
+
+    } else {
         alert("No hay clientes");
     }
 }
 
 
-    //Mostrar listado dietas
+//Mostrar listado dietas
 
-    function listarDietas(){
-        let dietas = clinica.listarDietas();
-        let contenedor = document.getElementById('');
-    }
+function listarDietas() {
+    let dietas = clinica.listarDietas();
+    let contenedor = document.getElementById('');
+}
 
 //Llamada a la Función de Ocultar Formularios.
 ocultarFormularios();
