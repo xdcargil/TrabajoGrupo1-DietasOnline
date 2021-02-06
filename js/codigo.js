@@ -15,7 +15,7 @@ botonListado2.addEventListener("click", mostrarListado2);
 
 var botonListado3 = document.getElementById('botonListado3');
 botonListado3.addEventListener("click", mostrarListado3);
-
+//bug miguel
 function mostrarListado1(){
     
     let listado1 = document.getElementById('listado1');
