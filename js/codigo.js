@@ -13,7 +13,7 @@ document.getElementById("prueba").addEventListener("click", prueba);
 function prueba(){
     document.getElementById("prueba").style.display= "block";
     alert('hola');
-
+}
 //Mostrar lista Cliente
 function listaClienteEspecifico(DNI) {
 
@@ -158,3 +158,4 @@ function altaCliente() {
 
     limpiarInputs(inputs);
 }
+
