@@ -40,7 +40,10 @@ class Clinica {
     }
     listarDietas() //Listar todas las dietas
     {
-
+        if (this.dietas.length > 0) 
+            return this.dietas;
+        else 
+            return "no hay dietas"
     }
     listarDietaEspecifica(oDieta) //Se pasa un valor INT (Código de dieta)
     {

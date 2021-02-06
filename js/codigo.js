@@ -8,6 +8,12 @@ clinica.llenarCliente();
 listarClientes();
 /*-------------------------EVENTSLISTENERS----------------------------------------------*/
 
+document.getElementById("prueba").addEventListener("click", prueba);
+
+function prueba(){
+    document.getElementById("prueba").style.display= "block";
+    alert('hola');
+}
 
 //Mostrar Listado Clientes
 function listarClientes(){
@@ -51,6 +57,14 @@ function listarClientes(){
         alert("No hay clientes");
     }
 }
+
+
+    //Mostrar listado dietas
+
+    function listarDietas(){
+        let dietas = clinica.listarDietas();
+        let contenedor = document.getElementById('');
+    }
 
 //Llamada a la Función de Ocultar Formularios.
 ocultarFormularios();

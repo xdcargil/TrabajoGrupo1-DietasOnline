@@ -16,7 +16,7 @@ class Dietista{
     setNombre(nuevoNombre){
         this.nombre = nuevoNombre;
     }
-    
+
     getApellidos(){
         return this.apellidos;
     }
