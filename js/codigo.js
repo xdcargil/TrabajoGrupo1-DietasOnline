@@ -15,50 +15,51 @@ botonListado2.addEventListener("click", mostrarListado2);
 
 var botonListado3 = document.getElementById('botonListado3');
 botonListado3.addEventListener("click", mostrarListado3);
+
 //bug miguel
-function mostrarListado1(){
-    
+function mostrarListado1() {
+
     let listado1 = document.getElementById('listado1');
 
 
-    if(listado1.style.display=="block"){
+    if (listado1.style.display == "block") {
         listado1.style.display = "none";
     }
-    else{
+    else {
         listado1.style.display = "block";
         listado1.removeChild(listado1.lastChild);
         listarClientes();
     }
 }
 
-function mostrarListado2(){
-    
+function mostrarListado2() {
+
     let listado2 = document.getElementById('listado2');
 
 
-    if(listado2.style.display=="block"){
+    if (listado2.style.display == "block") {
         listado2.style.display = "none";
     }
-    else{
+    else {
         listado2.style.display = "block";
         //listado2.removeChild(listado2.lastChild);
-        
+
     }
 }
 
 
-function mostrarListado3(){
-    
+function mostrarListado3() {
+
     let listado3 = document.getElementById('listado3');
 
 
-    if(listado3.style.display=="block"){
+    if (listado3.style.display == "block") {
         listado3.style.display = "none";
     }
-    else{
+    else {
         listado3.style.display = "block";
         //listado2.removeChild(listado2.lastChild);
-        
+
     }
 }
 
@@ -108,17 +109,17 @@ function listaClienteEspecifico(DNI) {
 }
 
 //Mostrar Listado Clientes
-function listarClientes(){
+function listarClientes() {
     let aDatosClientes = clinica.listarClientes();
     var insertar = document.getElementById("listado1"); //
 
-    if(aDatosClientes.length>0){
-        var tabla   = document.createElement("table");
+    if (aDatosClientes.length > 0) {
+        var tabla = document.createElement("table");
         var tblBody = document.createElement("tbody");
-    
+
         aDatosClientes.forEach(element => {
 
-            let tr=document.createElement("tr");
+            let tr = document.createElement("tr");
 
             var celda1 = document.createElement("td"); //TD para Nombre
             var celda2 = document.createElement("td"); //TD para Apellidos
@@ -144,19 +145,19 @@ function listarClientes(){
         tabla.appendChild(tblBody);
         insertar.appendChild(tabla);
         tabla.setAttribute("border", "2");
-    
-    }else{
+
+    } else {
         alert("No hay clientes");
     }
 }
 
 
-    //Mostrar listado dietas
+//Mostrar listado dietas
 
-    function listarDietas(){
-        let dietas = clinica.listarDietas();
-        let contenedor = document.getElementById('');
-    }
+function listarDietas() {
+    let dietas = clinica.listarDietas();
+    let contenedor = document.getElementById('');
+}
 
 //Llamada a la Función de Ocultar Formularios.
 ocultarFormularios();
@@ -201,34 +202,32 @@ function limpiarInputs(inputs) {
 
 //------------------------------AÑADIDO DE DATOS CON XML----------------------------------------------//
 
-function loadXMLDoc(filename)
-{
-	if (window.XMLHttpRequest)
-	  {
-	  var xhttp=new XMLHttpRequest();
-	  }
-	else // code for IE5 and IE6
-	  {
-	  var xhttp=new ActiveXObject("Microsoft.XMLHTTP");
-	  }
-	xhttp.open("GET",filename,false);
-	
-	xhttp.send();
-	
-	return xhttp.responseXML;
-} 
-function cargarDatos(){
+function loadXMLDoc(filename) {
+    if (window.XMLHttpRequest) {
+        var xhttp = new XMLHttpRequest();
+    }
+    else // code for IE5 and IE6
+    {
+        var xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xhttp.open("GET", filename, false);
 
-    
+    xhttp.send();
+
+    return xhttp.responseXML;
+}
+function cargarDatos() {
+
+
     var oXML = loadXMLDoc("../clinica.xml");
     var oDietas = oXML.getElementsByTagName("dieta");
     var oClientes = oXML.getElementsByTagName("cliente");
     var oDietistas = oXML.getElementsByTagName("dietista");
-   
-    
+
+
 
     //Introduze las dietas
-    for(var i=0; i<oDietas.length; i++){
+    for (var i = 0; i < oDietas.length; i++) {
 
         // console.log(oJuegos[i]);
         var nombre = oDietas[i].getElementsByTagName("nombre_dieta")[0].textContent;
@@ -242,7 +241,7 @@ function cargarDatos(){
     }
     //Introduze los clientes
 
-    for(var i=0; i<oClientes.length;i++){
+    for (var i = 0; i < oClientes.length; i++) {
 
         var nombre = oClientes[i].getElementsByTagName("nombre")[0].textContent;
         var apellidos = oClientes[i].getElementsByTagName("apellidos")[0].textContent;
@@ -255,13 +254,13 @@ function cargarDatos(){
 
     //Introduzco las compras
 
-    for(var i=0; i<oDietistas.length;i++){
+    for (var i = 0; i < oDietistas.length; i++) {
 
         var nombre = oDietistas[i].getElementsByTagName("nombre")[0].textContent;
         var apellidos = oDietistas[i].getElementsByTagName("apellidos")[0].textContent;
         var dni = oDietistas[i].getElementsByTagName("dni")[0].textContent;
 
-        var dietista =  new Dietista (nombre, apellidos, dni);
+        var dietista = new Dietista(nombre, apellidos, dni);
 
         clinica.altaDietista(dietista);
     }
