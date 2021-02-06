@@ -33,6 +33,11 @@ class Clinica {
     listarDietistas() //Listar todos los dietistas
     {
 
+        if (this.dietistas.length > 0) 
+            return this.dietistas;
+         else 
+            return "no hay clientes"
+
     }
     listarDietista(oDietista) //Se pasa un valor String (DNI del Dietista)
     {
