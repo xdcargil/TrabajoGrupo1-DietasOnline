@@ -60,7 +60,6 @@ class Clinica {
 
         if (oClienteExistente == null) {
             this.cliente.push(oCliente);
-
         }
         else {
             alert("Ya hay una persona con ese dni");

@@ -38,6 +38,11 @@ botonBajaCliente.addEventListener("click", mostrarFormularioBajaCliente);
 
 function limpiaPantalla(){
     
+    listado2.style.display = "none";
+    listado3.style.display = "none";
+    formularioAlta.style.display = "none";
+    formularioBaja.style.display = "none";
+
     let listado1 = document.getElementById('listado1');
     let listado2 = document.getElementById('listado2');
     let listado3 = document.getElementById('listado3');
@@ -445,3 +450,4 @@ function cargarDatos() {
 
     alert("Se han cargado los datos correctamente.");
 }
+
