@@ -8,6 +8,50 @@ clinica.llenarCliente();
 listarClientes();
 /*-------------------------EVENTSLISTENERS----------------------------------------------*/
 
+//Mostrar lista Cliente
+function listaClienteEspecifico(DNI) {
+
+    let cliente = clinica.listaClienteEspecifico(DNI);
+
+    if (typeof cliente === "object") {
+        var insertar = document.getElementById("test"); //
+
+
+        var tabla = document.createElement("table");
+        var tblBody = document.createElement("tbody");
+
+
+        let tr = document.createElement("tr");
+
+        var celda1 = document.createElement("td"); //TD para Nombre
+        var celda2 = document.createElement("td"); //TD para Apellidos
+        var celda3 = document.createElement("td"); //TD para DNI
+
+        var textoCeldaNombre = document.createTextNode(cliente.getNombre()); //Texto para Nombre
+        var textoCeldaApellidos = document.createTextNode(cliente.getApellidos()); //Texto para Apellidos
+        var textoCeldaDNI = document.createTextNode(cliente.getDNI()); //Texto para DNI
+
+
+        celda1.appendChild(textoCeldaNombre);
+        celda2.appendChild(textoCeldaApellidos);
+        celda3.appendChild(textoCeldaDNI);
+
+        tr.appendChild(celda1);
+        tr.appendChild(celda2);
+        tr.appendChild(celda3);
+
+        tblBody.appendChild(tr);
+
+        tabla.appendChild(tblBody);
+        insertar.appendChild(tabla);
+        tabla.setAttribute("border", "2");
+
+    } else {
+        alert("Cliente no encontrado");
+    }
+
+
+}
 
 //Mostrar Listado Clientes
 function listarClientes(){
