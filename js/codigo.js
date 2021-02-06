@@ -2,7 +2,7 @@
 //Creamos el objeto tienda para añadirle datos posteriormente
 let clinica = new Clinica();
 
-clinica.llenarCliente();
+cargarDatos();
 
 //limpiar toda la pantalla nada mas empezar
 limpiaPantalla();
@@ -350,12 +350,12 @@ function cargarDatos() {
     }
     //Introduze los clientes
 
-    for (var i = 0; i < oClientes.length; i++) {
+    for (var i = 1; i < oClientes.length; i++) {
 
         var nombre = oClientes[i].getElementsByTagName("nombre")[0].textContent;
         var apellidos = oClientes[i].getElementsByTagName("apellidos")[0].textContent;
         var dni = oClientes[i].getElementsByTagName("DNI")[0].textContent;
-
+        console.log(nombre,apellidos,dni);
         var cliente = new Cliente(nombre, apellidos, dni);
 
         clinica.altaCliente(cliente);
@@ -370,7 +370,7 @@ function cargarDatos() {
         var dni = oDietistas[i].getElementsByTagName("dni")[0].textContent;
 
         var dietista = new Dietista(nombre, apellidos, dni);
-
+        
         clinica.altaDietista(dietista);
     }
 
