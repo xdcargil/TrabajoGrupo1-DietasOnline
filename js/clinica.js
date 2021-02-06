@@ -6,6 +6,17 @@ class Clinica {
         this.cliente = [];
         this.dietas = [];
     }
+    
+    llenarCliente(){
+        let cliente = new Cliente("nombre","apellidos",32)
+        let cliente2 = new Cliente("nombre2","apellidos2",33)
+        let cliente3 = new Cliente("nombre3","apellidos3",34)
+
+        this.cliente.push(cliente);
+        this.cliente.push(cliente2);
+        this.cliente.push(cliente3);
+
+    }
 
     listarClientes() //Lista todos los clientes
     {
@@ -55,7 +66,7 @@ class Clinica {
     {
         let oClienteExistente = null;
 
-        oClienteExistente = this._buscarCliente(oCliente.DNI);
+        oClienteExistente = this._buscarCliente(oCliente.dni);
 
         if (oClienteExistente == null) {
             this.cliente.push(oCliente);
@@ -69,7 +80,7 @@ class Clinica {
     {
         let oClienteExistente = null;
 
-        oClienteExistente = this._buscarCliente(oCliente.DNI);
+        oClienteExistente = this._buscarCliente(oCliente.dni);
 
         if (oClienteExistente == null) {
             return 0; // 0 si no encuentra el objeto
@@ -152,7 +163,7 @@ class Clinica {
     }
     _buscarCliente(sDni) {
         let oClienteExistente = null;
-        oClienteExistente = this.cliente.find(oC => oC.DNI == sDni);
+        oClienteExistente = this.cliente.find(oC => oC.dni == sDni);
         return oClienteExistente;
     }
 

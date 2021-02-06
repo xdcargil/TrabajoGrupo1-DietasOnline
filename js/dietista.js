@@ -29,7 +29,7 @@ class Dietista{
         return this.dni;
     }
 
-    setDNI(nuevoDNI){
+    setNombre(nuevoDNI){
         this.dni = nuevoDNI;
     }
 
