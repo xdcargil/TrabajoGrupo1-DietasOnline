@@ -4,8 +4,11 @@ let clinica = new Clinica();
 
 cargarDatos();
 
+
+
 //limpiar toda la pantalla nada mas empezar
 limpiaPantalla();
+
 
 /*-------------------------EVENTSLISTENERS----------------------------------------------*/
 
@@ -376,3 +379,4 @@ function cargarDatos() {
 
     alert("Se han cargado los datos correctamente.");
 }
+
