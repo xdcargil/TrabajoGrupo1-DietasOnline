@@ -4,23 +4,71 @@ let clinica = new Clinica();
 
 clinica.llenarCliente();
 
-
-listarClientes();
 /*-------------------------EVENTSLISTENERS----------------------------------------------*/
 
-document.getElementById("prueba").addEventListener("click", prueba);
+var botonListado1 = document.getElementById('botonListado1');
+botonListado1.addEventListener("click", mostrarListado1);
 
-function prueba(){
-    document.getElementById("prueba").style.display= "block";
-    alert('hola');
+
+var botonListado2 = document.getElementById('botonListado2');
+botonListado2.addEventListener("click", mostrarListado2);
+
+var botonListado3 = document.getElementById('botonListado3');
+botonListado3.addEventListener("click", mostrarListado3);
+
+function mostrarListado1(){
+    
+    let listado1 = document.getElementById('listado1');
+
+
+    if(listado1.style.display=="block"){
+        listado1.style.display = "none";
+    }
+    else{
+        listado1.style.display = "block";
+        listado1.removeChild(listado1.lastChild);
+        listarClientes();
+    }
 }
+
+function mostrarListado2(){
+    
+    let listado2 = document.getElementById('listado2');
+
+
+    if(listado2.style.display=="block"){
+        listado2.style.display = "none";
+    }
+    else{
+        listado2.style.display = "block";
+        //listado2.removeChild(listado2.lastChild);
+        
+    }
+}
+
+
+function mostrarListado3(){
+    
+    let listado3 = document.getElementById('listado3');
+
+
+    if(listado3.style.display=="block"){
+        listado3.style.display = "none";
+    }
+    else{
+        listado3.style.display = "block";
+        //listado2.removeChild(listado2.lastChild);
+        
+    }
+}
+
 //Mostrar lista Cliente
 function listaClienteEspecifico(DNI) {
 
     let cliente = clinica.listaClienteEspecifico(DNI);
 
     if (typeof cliente === "object") {
-        var insertar = document.getElementById("test"); //
+        var insertar = document.getElementById("listado1"); //
 
 
         var tabla = document.createElement("table");
@@ -62,7 +110,7 @@ function listaClienteEspecifico(DNI) {
 //Mostrar Listado Clientes
 function listarClientes(){
     let aDatosClientes = clinica.listarClientes();
-    var insertar = document.getElementById("test"); //
+    var insertar = document.getElementById("listado1"); //
 
     if(aDatosClientes.length>0){
         var tabla   = document.createElement("table");
