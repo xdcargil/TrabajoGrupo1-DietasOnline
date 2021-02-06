@@ -8,7 +8,6 @@ cargarDatos();
 limpiaPantalla();
 
 /*-------------------------EVENTSLISTENERS----------------------------------------------*/
-
 document.getElementById("btnAceptarAltaPersona").addEventListener("click", altaUsuario);
 
 document.getElementById("btnAceptarBajaPersona").addEventListener("click", bajaUsuario);
@@ -450,4 +449,5 @@ function cargarDatos() {
 
     alert("Se han cargado los datos correctamente.");
 }
+
 
