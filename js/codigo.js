@@ -2,10 +2,9 @@
 //Creamos el objeto tienda para añadirle datos posteriormente
 let clinica = new Clinica();
 
-clinica.llenarCliente();
+cargarDatos();
 
-//limpiar toda la pantalla nada mas empezar
-limpiaPantalla();
+clinica.llenarCliente();
 
 /*-------------------------EVENTSLISTENERS----------------------------------------------*/
 
@@ -19,94 +18,8 @@ botonListado2.addEventListener("click", mostrarListado2);
 var botonListado3 = document.getElementById('botonListado3');
 botonListado3.addEventListener("click", mostrarListado3);
 
-var botonAltaCliente = document.getElementById('altaCliente');
-botonAltaCliente.addEventListener("click", mostrarFormularioAltaCliente);
-
-var botonBajaCliente = document.getElementById('bajaCliente');
-botonBajaCliente.addEventListener("click", mostrarFormularioBajaCliente);
-
-
-
-
-
-
-//funcion para limpiar pantalla
-
-function limpiaPantalla(){
-    
-    let listado1 = document.getElementById('listado1');
-    let listado2 = document.getElementById('listado2');
-    let listado3 = document.getElementById('listado3');
-    let formularioAlta = document.getElementById('formularioAlta');
-    let formularioBaja = document.getElementById('formularioBaja');
-    
-    listado1.style.display = "none";
-    listado2.style.display = "none";
-    listado3.style.display = "none";
-    formularioAlta.style.display = "none";
-    formularioBaja.style.display = "none";
-
-}
-
-//funciones para mostrar formularios
-
-function mostrarFormularioAltaCliente(){
-
-    let listado1 = document.getElementById('listado1');
-    let listado2 = document.getElementById('listado2');
-    let listado3 = document.getElementById('listado3');
-    let formularioBaja = document.getElementById('formularioBaja');
-    
-    listado1.style.display = "none";
-    listado2.style.display = "none";
-    listado3.style.display = "none";
-    formularioBaja.style.display = "none";
-
-    let formularioAlta = document.getElementById('formularioAlta');
-
-    if (formularioAlta.style.display == "block") {
-        formularioAlta.style.display = "none";
-    }
-    else {
-        formularioAlta.style.display = "block";
-    }
-
-}
-
-function mostrarFormularioBajaCliente(){
-    let listado1 = document.getElementById('listado1');
-    let listado2 = document.getElementById('listado2');
-    let listado3 = document.getElementById('listado3');
-    let formularioAlta = document.getElementById('formularioAlta');
-    
-    listado1.style.display = "none";
-    listado2.style.display = "none";
-    listado3.style.display = "none";
-    formularioAlta.style.display = "none";
-
-    let formularioBaja = document.getElementById('formularioBaja');
-
-    if (formularioBaja.style.display == "block") {
-        formularioBaja.style.display = "none";
-    }
-    else {
-        formularioBaja.style.display = "block";
-    }
-}
-
-
-//funciones mostrar listado
+//bug miguel
 function mostrarListado1() {
-
-    let listado2 = document.getElementById('listado2');
-    let listado3 = document.getElementById('listado3');
-    let formularioAlta = document.getElementById('formularioAlta');
-    let formularioBaja = document.getElementById('formularioBaja');
-    
-    listado2.style.display = "none";
-    listado3.style.display = "none";
-    formularioAlta.style.display = "none";
-    formularioBaja.style.display = "none";
 
     let listado1 = document.getElementById('listado1');
 
@@ -123,16 +36,6 @@ function mostrarListado1() {
 
 function mostrarListado2() {
 
-    let listado1 = document.getElementById('listado1');
-    let listado3 = document.getElementById('listado3');
-    let formularioAlta = document.getElementById('formularioAlta');
-    let formularioBaja = document.getElementById('formularioBaja');
-    
-    listado1.style.display = "none";
-    listado3.style.display = "none";
-    formularioAlta.style.display = "none";
-    formularioBaja.style.display = "none";
-
     let listado2 = document.getElementById('listado2');
 
 
@@ -148,16 +51,6 @@ function mostrarListado2() {
 
 
 function mostrarListado3() {
-
-    let listado1 = document.getElementById('listado1');
-    let listado2 = document.getElementById('listado2');
-    let formularioAlta = document.getElementById('formularioAlta');
-    let formularioBaja = document.getElementById('formularioBaja');
-    
-    listado1.style.display = "none";
-    listado2.style.display = "none";
-    formularioAlta.style.display = "none";
-    formularioBaja.style.display = "none";
 
     let listado3 = document.getElementById('listado3');
 
@@ -370,7 +263,7 @@ function cargarDatos() {
         var dni = oDietistas[i].getElementsByTagName("dni")[0].textContent;
 
         var dietista = new Dietista(nombre, apellidos, dni);
-
+        
         clinica.altaDietista(dietista);
     }
 
