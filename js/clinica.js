@@ -7,16 +7,6 @@ class Clinica {
         this.dietas = [];
     }
     
-    llenarCliente(){
-        let cliente = new Cliente("nombre","apellidos",32)
-        let cliente2 = new Cliente("nombre2","apellidos2",33)
-        let cliente3 = new Cliente("nombre3","apellidos3",34)
-
-        this.cliente.push(cliente);
-        this.cliente.push(cliente2);
-        this.cliente.push(cliente3);
-
-    }
 
     listarClientes() //Lista todos los clientes
     {
@@ -66,30 +56,30 @@ class Clinica {
     {
         let oClienteExistente = null;
 
-        oClienteExistente = this._buscarCliente(oCliente.dni);
+        oClienteExistente = this._buscarCliente(oCliente.DNI);
 
         if (oClienteExistente == null) {
             this.cliente.push(oCliente);
-            alert("Alta de cliente realizada");
+
         }
         else {
             alert("Ya hay una persona con ese dni");
         }
     }
-    bajaCliente(oCliente) //Se pasa un objeto cliente
+    bajaCliente(sDni) //Se pasa un dni
     {
         let oClienteExistente = null;
 
-        oClienteExistente = this._buscarCliente(oCliente.dni);
+        oClienteExistente = this._buscarCliente(sDni);
 
         if (oClienteExistente == null) {
+            alert("No existe ese cliente");
             return 0; // 0 si no encuentra el objeto
         }
         else {
-            console.log(oClienteExistente.dni);
-            let posicion = this.posicionArrayCliente(oClienteExistente.dni);
+            let posicion = this.posicionArrayCliente(oClienteExistente.DNI);
             this.cliente.splice(posicion, 1);
-            console.log(this.cliente);
+            alert("Cliente borrado");
         }
 
     }
@@ -102,7 +92,6 @@ class Clinica {
 
         if (oDietistaExistente == null) {
             this.dietistas.push(oDietista);
-            alert("Alta de dietista realizada");
         }
         else {
             alert("Ya hay una persona con ese dni");
@@ -137,7 +126,6 @@ class Clinica {
 
         if (oDietaExistente == null) {
             this.dietas.push(oDieta);
-            alert("Alta de dietista realizada");
         }
         else {
             alert("Ya hay una persona con ese dni");
@@ -163,7 +151,7 @@ class Clinica {
     }
     _buscarCliente(sDni) {
         let oClienteExistente = null;
-        oClienteExistente = this.cliente.find(oC => oC.dni == sDni);
+        oClienteExistente = this.cliente.find(oC => oC.DNI == sDni);
         return oClienteExistente;
     }
 
@@ -179,29 +167,24 @@ class Clinica {
     }
 
     posicionArrayCliente(sDni) {
-        console.log("as");
         for (let i = 0; i < this.cliente.length; i++) {
-            if (this.cliente[i].dni == sDni) {
+            if (this.cliente[i].DNI == sDni) {
                 return i;
-                console.log(i);
             }
         }
 
     }
 
     posicionArrayDietista(sDni) {
-        console.log("as");
         for (let i = 0; i < this.dietistas.length; i++) {
             if (this.dietistas[i].dni == sDni) {
                 return i;
-                console.log(i);
             }
         }
 
     }
 
     posicionArrayDieta(idDieta) {
-        console.log("as");
         for (let i = 0; i < this.dietas.length; i++) {
             if (this.dietas[i].id_dieta == idDieta) {
                 return i;

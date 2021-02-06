@@ -2,9 +2,16 @@
 //Creamos el objeto tienda para añadirle datos posteriormente
 let clinica = new Clinica();
 
-clinica.llenarCliente();
+cargarDatos();
+
+//limpiar toda la pantalla nada mas empezar
+limpiaPantalla();
 
 /*-------------------------EVENTSLISTENERS----------------------------------------------*/
+
+document.getElementById("btnAceptarAltaPersona").addEventListener("click", altaUsuario);
+
+document.getElementById("btnAceptarBajaPersona").addEventListener("click", bajaUsuario);
 
 var botonListado1 = document.getElementById('botonListado1');
 botonListado1.addEventListener("click", mostrarListado1);
@@ -15,50 +22,157 @@ botonListado2.addEventListener("click", mostrarListado2);
 
 var botonListado3 = document.getElementById('botonListado3');
 botonListado3.addEventListener("click", mostrarListado3);
-//bug miguel
-function mostrarListado1(){
+
+var botonAltaCliente = document.getElementById('altaCliente');
+botonAltaCliente.addEventListener("click", mostrarFormularioAltaCliente);
+
+var botonBajaCliente = document.getElementById('bajaCliente');
+botonBajaCliente.addEventListener("click", mostrarFormularioBajaCliente);
+
+
+
+
+
+
+//funcion para limpiar pantalla
+
+function limpiaPantalla(){
     
+    let listado1 = document.getElementById('listado1');
+    let listado2 = document.getElementById('listado2');
+    let listado3 = document.getElementById('listado3');
+    let formularioAlta = document.getElementById('formularioAlta');
+    let formularioBaja = document.getElementById('formularioBaja');
+    
+    listado1.style.display = "none";
+    listado2.style.display = "none";
+    listado3.style.display = "none";
+    formularioAlta.style.display = "none";
+    formularioBaja.style.display = "none";
+
+}
+
+//funciones para mostrar formularios
+
+function mostrarFormularioAltaCliente(){
+
+    let listado1 = document.getElementById('listado1');
+    let listado2 = document.getElementById('listado2');
+    let listado3 = document.getElementById('listado3');
+    let formularioBaja = document.getElementById('formularioBaja');
+    
+    listado1.style.display = "none";
+    listado2.style.display = "none";
+    listado3.style.display = "none";
+    formularioBaja.style.display = "none";
+
+    let formularioAlta = document.getElementById('formularioAlta');
+
+    if (formularioAlta.style.display == "block") {
+        formularioAlta.style.display = "none";
+    }
+    else {
+        formularioAlta.style.display = "block";
+    }
+
+}
+
+function mostrarFormularioBajaCliente(){
+    let listado1 = document.getElementById('listado1');
+    let listado2 = document.getElementById('listado2');
+    let listado3 = document.getElementById('listado3');
+    let formularioAlta = document.getElementById('formularioAlta');
+    
+    listado1.style.display = "none";
+    listado2.style.display = "none";
+    listado3.style.display = "none";
+    formularioAlta.style.display = "none";
+
+    let formularioBaja = document.getElementById('formularioBaja');
+
+    if (formularioBaja.style.display == "block") {
+        formularioBaja.style.display = "none";
+    }
+    else {
+        formularioBaja.style.display = "block";
+    }
+}
+
+
+//funciones mostrar listado
+function mostrarListado1() {
+
+    let listado2 = document.getElementById('listado2');
+    let listado3 = document.getElementById('listado3');
+    let formularioAlta = document.getElementById('formularioAlta');
+    let formularioBaja = document.getElementById('formularioBaja');
+    
+    listado2.style.display = "none";
+    listado3.style.display = "none";
+    formularioAlta.style.display = "none";
+    formularioBaja.style.display = "none";
+
     let listado1 = document.getElementById('listado1');
 
 
-    if(listado1.style.display=="block"){
+    if (listado1.style.display == "block") {
         listado1.style.display = "none";
     }
-    else{
+    else {
         listado1.style.display = "block";
         listado1.removeChild(listado1.lastChild);
         listarClientes();
     }
 }
 
-function mostrarListado2(){
+function mostrarListado2() {
+
+    let listado1 = document.getElementById('listado1');
+    let listado3 = document.getElementById('listado3');
+    let formularioAlta = document.getElementById('formularioAlta');
+    let formularioBaja = document.getElementById('formularioBaja');
     
+    listado1.style.display = "none";
+    listado3.style.display = "none";
+    formularioAlta.style.display = "none";
+    formularioBaja.style.display = "none";
+
     let listado2 = document.getElementById('listado2');
 
 
-    if(listado2.style.display=="block"){
+    if (listado2.style.display == "block") {
         listado2.style.display = "none";
     }
-    else{
+    else {
         listado2.style.display = "block";
         //listado2.removeChild(listado2.lastChild);
-        
+
     }
 }
 
 
-function mostrarListado3(){
+function mostrarListado3() {
+
+    let listado1 = document.getElementById('listado1');
+    let listado2 = document.getElementById('listado2');
+    let formularioAlta = document.getElementById('formularioAlta');
+    let formularioBaja = document.getElementById('formularioBaja');
     
+    listado1.style.display = "none";
+    listado2.style.display = "none";
+    formularioAlta.style.display = "none";
+    formularioBaja.style.display = "none";
+
     let listado3 = document.getElementById('listado3');
 
 
-    if(listado3.style.display=="block"){
+    if (listado3.style.display == "block") {
         listado3.style.display = "none";
     }
-    else{
+    else {
         listado3.style.display = "block";
         //listado2.removeChild(listado2.lastChild);
-        
+
     }
 }
 
@@ -108,17 +222,17 @@ function listaClienteEspecifico(DNI) {
 }
 
 //Mostrar Listado Clientes
-function listarClientes(){
+function listarClientes() {
     let aDatosClientes = clinica.listarClientes();
     var insertar = document.getElementById("listado1"); //
 
-    if(aDatosClientes.length>0){
-        var tabla   = document.createElement("table");
+    if (aDatosClientes.length > 0) {
+        var tabla = document.createElement("table");
         var tblBody = document.createElement("tbody");
-    
+
         aDatosClientes.forEach(element => {
 
-            let tr=document.createElement("tr");
+            let tr = document.createElement("tr");
 
             var celda1 = document.createElement("td"); //TD para Nombre
             var celda2 = document.createElement("td"); //TD para Apellidos
@@ -144,19 +258,19 @@ function listarClientes(){
         tabla.appendChild(tblBody);
         insertar.appendChild(tabla);
         tabla.setAttribute("border", "2");
-    
-    }else{
+
+    } else {
         alert("No hay clientes");
     }
 }
 
 
-    //Mostrar listado dietas
+//Mostrar listado dietas
 
-    function listarDietas(){
-        let dietas = clinica.listarDietas();
-        let contenedor = document.getElementById('');
-    }
+function listarDietas() {
+    let dietas = clinica.listarDietas();
+    let contenedor = document.getElementById('');
+}
 
 //Llamada a la Función de Ocultar Formularios.
 ocultarFormularios();
@@ -182,9 +296,74 @@ function limpiarInputs(inputs) {
 
 
 
+function altaUsuario() {
 
 
 
+    let form = document.getElementById("formularioAlta");
+    let inputs = form.getElementsByTagName("input");
+
+
+    let sNombre = inputs[0].value;
+    let sApellidos = inputs[1].value;
+    let sDni = inputs[2].value;
+
+    let res = validaExpRegUsuario();
+
+    if (res == true) {
+        alert("Los campos no están bien introducidos");
+
+    } else {
+
+        let oUsuario = new Cliente(sNombre,sApellidos,sDni);
+
+        if (clinica.altaCliente(oUsuario)) {
+            alert("Cliente dado de alta correctamente");
+            limpiarInputs(inputs);
+            ocultarFormularios();
+        }
+
+
+
+    }
+
+
+
+
+}
+
+
+function bajaUsuario() {
+
+
+
+    let form = document.getElementById("formularioBaja");
+    let inputs = form.getElementsByTagName("input");
+
+
+    let sDni = inputs[0].value;
+
+    let res = validarBajaUsuario();
+
+    if (res == true) {
+        alert("Los campos no están bien introducidos");
+
+    } else {
+        
+        if (clinica.bajaCliente(sDni)) {
+            alert("Cliente dado de baja correctamente");
+            limpiarInputs(inputs);
+            ocultarFormularios();
+        }
+
+
+
+    }
+
+
+
+
+}
 
 
 
@@ -201,34 +380,32 @@ function limpiarInputs(inputs) {
 
 //------------------------------AÑADIDO DE DATOS CON XML----------------------------------------------//
 
-function loadXMLDoc(filename)
-{
-	if (window.XMLHttpRequest)
-	  {
-	  var xhttp=new XMLHttpRequest();
-	  }
-	else // code for IE5 and IE6
-	  {
-	  var xhttp=new ActiveXObject("Microsoft.XMLHTTP");
-	  }
-	xhttp.open("GET",filename,false);
-	
-	xhttp.send();
-	
-	return xhttp.responseXML;
-} 
-function cargarDatos(){
+function loadXMLDoc(filename) {
+    if (window.XMLHttpRequest) {
+        var xhttp = new XMLHttpRequest();
+    }
+    else // code for IE5 and IE6
+    {
+        var xhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xhttp.open("GET", filename, false);
 
-    
-    var oXML = loadXMLDoc("../clinica.xml");
+    xhttp.send();
+
+    return xhttp.responseXML;
+}
+function cargarDatos() {
+
+
+    var oXML = loadXMLDoc("clinica.xml");
     var oDietas = oXML.getElementsByTagName("dieta");
     var oClientes = oXML.getElementsByTagName("cliente");
     var oDietistas = oXML.getElementsByTagName("dietista");
-   
-    
+
+
 
     //Introduze las dietas
-    for(var i=0; i<oDietas.length; i++){
+    for (var i = 0; i < oDietas.length; i++) {
 
         // console.log(oJuegos[i]);
         var nombre = oDietas[i].getElementsByTagName("nombre_dieta")[0].textContent;
@@ -242,12 +419,12 @@ function cargarDatos(){
     }
     //Introduze los clientes
 
-    for(var i=0; i<oClientes.length;i++){
+    for (var i = 1; i < oClientes.length; i++) {
 
         var nombre = oClientes[i].getElementsByTagName("nombre")[0].textContent;
         var apellidos = oClientes[i].getElementsByTagName("apellidos")[0].textContent;
         var dni = oClientes[i].getElementsByTagName("DNI")[0].textContent;
-
+        console.log(nombre,apellidos,dni);
         var cliente = new Cliente(nombre, apellidos, dni);
 
         clinica.altaCliente(cliente);
@@ -255,14 +432,14 @@ function cargarDatos(){
 
     //Introduzco las compras
 
-    for(var i=0; i<oDietistas.length;i++){
+    for (var i = 0; i < oDietistas.length; i++) {
 
         var nombre = oDietistas[i].getElementsByTagName("nombre")[0].textContent;
         var apellidos = oDietistas[i].getElementsByTagName("apellidos")[0].textContent;
         var dni = oDietistas[i].getElementsByTagName("dni")[0].textContent;
 
-        var dietista =  new Dietista (nombre, apellidos, dni);
-
+        var dietista = new Dietista(nombre, apellidos, dni);
+        
         clinica.altaDietista(dietista);
     }
 
