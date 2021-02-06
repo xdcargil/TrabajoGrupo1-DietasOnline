@@ -60,7 +60,6 @@ class Clinica {
 
         if (oClienteExistente == null) {
             this.cliente.push(oCliente);
-            alert("Alta de cliente realizada");
         }
         else {
             alert("Ya hay una persona con ese dni");
@@ -92,7 +91,6 @@ class Clinica {
 
         if (oDietistaExistente == null) {
             this.dietistas.push(oDietista);
-            alert("Alta de dietista realizada");
         }
         else {
             alert("Ya hay una persona con ese dni");
@@ -127,7 +125,6 @@ class Clinica {
 
         if (oDietaExistente == null) {
             this.dietas.push(oDieta);
-            alert("Alta de dietista realizada");
         }
         else {
             alert("Ya hay una persona con ese dni");
