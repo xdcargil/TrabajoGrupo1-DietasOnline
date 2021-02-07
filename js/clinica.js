@@ -60,10 +60,10 @@ class Clinica {
 
         if (oClienteExistente == null) {
             this.cliente.push(oCliente);
-
+            return true;
         }
         else {
-            alert("Ya hay una persona con ese dni");
+            return false;
         }
     }
     bajaCliente(sDni) //Se pasa un dni
@@ -73,13 +73,13 @@ class Clinica {
         oClienteExistente = this._buscarCliente(sDni);
 
         if (oClienteExistente == null) {
-            alert("No existe ese cliente");
-            return 0; // 0 si no encuentra el objeto
+            
+            return false; // false si no encuentra el objeto
         }
         else {
             let posicion = this.posicionArrayCliente(oClienteExistente.DNI);
             this.cliente.splice(posicion, 1);
-            alert("Cliente borrado");
+            return true;
         }
 
     }

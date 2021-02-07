@@ -408,9 +408,11 @@ function altaUsuario() {
         let oUsuario = new Cliente(sNombre,sApellidos,sDni);
 
         if (clinica.altaCliente(oUsuario)) {
-            alert("Cliente dado de alta correctamente");
+            alert('Cliente añadido');
             limpiarInputs(inputs);
             ocultarFormularios();
+        }else{
+            alert('Ya existe un cliente con ese DNI');
         }
 
 
@@ -444,6 +446,9 @@ function bajaUsuario() {
             alert("Cliente dado de baja correctamente");
             limpiarInputs(inputs);
             ocultarFormularios();
+        }
+        else{
+            alert('No existe un cliente con ese DNI');
         }
 
 

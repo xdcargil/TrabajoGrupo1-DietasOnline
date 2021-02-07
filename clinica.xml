@@ -18,39 +18,44 @@
         <cliente>
             <nombre>Armando</nombre>
             <apellidos>Jaleo</apellidos>
-            <DNI>1</DNI>
+            <DNI>98131154A</DNI>
         </cliente>
         <cliente>
             <nombre>Lola</nombre>
             <apellidos>Mento</apellidos>
-            <DNI>2</DNI>
+            <DNI>87122154G</DNI>
         </cliente>
         <cliente>
             <nombre>Susana</nombre>
             <apellidos>Torio</apellidos>
-            <DNI>3</DNI>
+            <DNI>11131154F</DNI>
         </cliente>
         <cliente>
             <nombre>Esteban</nombre>
             <apellidos>Dido</apellidos>
-            <DNI>4</DNI>
+            <DNI>41143154D</DNI>
         </cliente>
         <cliente>
             <nombre>Rosa</nombre>
             <apellidos>Gutierrez</apellidos>
-            <DNI>5</DNI>
+            <DNI>42131154E</DNI>
+        </cliente>
+	<cliente>
+            <nombre>Jesús</nombre>
+            <apellidos>Rodríguez</apellidos>
+            <DNI>49131154G</DNI>
         </cliente>
     </cliente>
     <dietistas>
         <dietista>
             <nombre>Pepe</nombre>
             <apellidos>Viyuela</apellidos>
-            <dni>1</dni>
+            <dni>77131154A</dni>
         </dietista>
         <dietista>
         <nombre>Manolo</nombre>
         <apellidos>Botero</apellidos>
-        <dni>2</dni>
+        <dni>66131154A</dni>
         </dietista>
     </dietistas>
 </clinica>
