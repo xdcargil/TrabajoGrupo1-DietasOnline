@@ -40,6 +40,15 @@ form label{
     border-bottom: 5px solid rgb(8, 143, 233);
 }
 
+input{
+    -webkit-box-shadow: 10px 10px 24px -14px rgba(0,0,0,0.69);
+    -moz-box-shadow: 10px 10px 24px -14px rgba(0,0,0,0.69);
+    box-shadow: 10px 10px 24px -14px rgba(0,0,0,0.69);
+}
+label{
+    font: bold;
+    font-size: large;
+}
 .error {
     background-color:yellow;
     }

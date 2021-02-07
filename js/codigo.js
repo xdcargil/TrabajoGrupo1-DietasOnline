@@ -13,6 +13,9 @@ document.getElementById("btnAceptarAltaPersona").addEventListener("click", altaU
 
 document.getElementById("btnAceptarBajaPersona").addEventListener("click", bajaUsuario);
 
+document.getElementById("btnBuscarFiltroDNI").addEventListener("click", listaClienteEspecifico);
+
+
 var botonListado1 = document.getElementById('botonListado1');
 botonListado1.addEventListener("click", mostrarListado1);
 
@@ -28,8 +31,6 @@ botonAltaCliente.addEventListener("click", mostrarFormularioAltaCliente);
 
 var botonBajaCliente = document.getElementById('bajaCliente');
 botonBajaCliente.addEventListener("click", mostrarFormularioBajaCliente);
-
-
 
 
 
@@ -170,54 +171,82 @@ function mostrarListado3() {
     }
     else {
         listado3.style.display = "block";
-        //listado2.removeChild(listado2.lastChild);
+        let tabla =document.getElementById("tablaFiltroID");
+        if(listado3.children.length==2){
+            tabla.remove();
+        }
+        
 
     }
 }
 
 //Mostrar lista Cliente
-function listaClienteEspecifico(DNI) {
-
+function listaClienteEspecifico() {
+    let DNI = formularioFiltrarDNI.DNI.value.trim();
+    let div = document.getElementById("listado3");
     let cliente = clinica.listaClienteEspecifico(DNI);
-
-    if (typeof cliente === "object") {
-        var insertar = document.getElementById("listado1"); //
-
-
-        var tabla = document.createElement("table");
-        var tblBody = document.createElement("tbody");
-
-
-        let tr = document.createElement("tr");
-
-        var celda1 = document.createElement("td"); //TD para Nombre
-        var celda2 = document.createElement("td"); //TD para Apellidos
-        var celda3 = document.createElement("td"); //TD para DNI
-
-        var textoCeldaNombre = document.createTextNode(cliente.getNombre()); //Texto para Nombre
-        var textoCeldaApellidos = document.createTextNode(cliente.getApellidos()); //Texto para Apellidos
-        var textoCeldaDNI = document.createTextNode(cliente.getDNI()); //Texto para DNI
-
-
-        celda1.appendChild(textoCeldaNombre);
-        celda2.appendChild(textoCeldaApellidos);
-        celda3.appendChild(textoCeldaDNI);
-
-        tr.appendChild(celda1);
-        tr.appendChild(celda2);
-        tr.appendChild(celda3);
-
-        tblBody.appendChild(tr);
-
-        tabla.appendChild(tblBody);
-        insertar.appendChild(tabla);
-        tabla.setAttribute("border", "2");
-
-    } else {
-        alert("Cliente no encontrado");
+    if(div.children.length==1){
+        if (typeof cliente === "object") {
+            var insertar = document.getElementById("listado3"); //
+            var tabla = document.createElement("table");
+    
+            //encabezado
+    
+            var tbThead = document.createElement("thead");
+            let trEncabezado = document.createElement("tr");
+    
+            let thEncabezadoNombre = document.createElement("th");
+            let thEncabezadoApellidos = document.createElement("th");
+            let thEncabezadoDNI = document.createElement("th");
+    
+            var textoEncabezadoNombre = document.createTextNode("Nombre"); //Texto para Nombre
+            var textoEncabezadoApellidos = document.createTextNode("Apellidos"); //Texto para Apellidos
+            var textoEncabezadoDNI = document.createTextNode("DNI"); //Texto para DNI
+    
+            thEncabezadoNombre.appendChild(textoEncabezadoNombre);
+            thEncabezadoApellidos.appendChild(textoEncabezadoApellidos);
+            thEncabezadoDNI.appendChild(textoEncabezadoDNI);
+    
+            trEncabezado.appendChild(thEncabezadoNombre);
+            trEncabezado.appendChild(thEncabezadoApellidos);
+            trEncabezado.appendChild(thEncabezadoDNI);
+    
+            var tblBody = document.createElement("tbody");
+            tbThead.appendChild(trEncabezado);
+            tabla.appendChild(tbThead);
+    
+            let tr = document.createElement("tr");
+    
+            var celda1 = document.createElement("td"); //TD para Nombre
+            var celda2 = document.createElement("td"); //TD para Apellidos
+            var celda3 = document.createElement("td"); //TD para DNI
+    
+            var textoCeldaNombre = document.createTextNode(cliente.getNombre()); //Texto para Nombre
+            var textoCeldaApellidos = document.createTextNode(cliente.getApellidos()); //Texto para Apellidos
+            var textoCeldaDNI = document.createTextNode(cliente.getDNI()); //Texto para DNI
+    
+    
+            celda1.appendChild(textoCeldaNombre);
+            celda2.appendChild(textoCeldaApellidos);
+            celda3.appendChild(textoCeldaDNI);
+    
+            tr.appendChild(celda1);
+            tr.appendChild(celda2);
+            tr.appendChild(celda3);
+    
+            tblBody.appendChild(tr);
+    
+            tabla.appendChild(tblBody);
+            insertar.appendChild(tabla);
+            tabla.setAttribute("border", "2");
+            tabla.setAttribute("id", "tablaFiltroID");
+            
+            formularioFiltrarDNI.DNI.value="";
+        } else {
+            alert("Cliente no encontrado");
+        }
     }
-
-
+    
 }
 
 //Mostrar Listado Clientes

@@ -37,10 +37,7 @@ class Clinica {
             return "no hay clientes"
 
     }
-    listarDietista(oDietista) //Se pasa un valor String (DNI del Dietista)
-    {
-
-    }
+   
     listarDietas() //Listar todas las dietas
     {
         if (this.dietas.length > 0) 
@@ -48,10 +45,7 @@ class Clinica {
         else 
             return "no hay dietas"
     }
-    listarDietaEspecifica(oDieta) //Se pasa un valor INT (Código de dieta)
-    {
-
-    }
+   
     altaCliente(oCliente) //Se pasa un objeto cliente
     {
         let oClienteExistente = null;

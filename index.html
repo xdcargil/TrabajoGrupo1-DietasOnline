@@ -23,7 +23,7 @@
       <div class="col-md-2">
         <button type="button" class="btn btn-primary btn-lg botonFormulario" id="botonListado1">Mostrar clientes</button>
         <button type="button" class="btn btn-primary btn-lg botonFormulario" id="botonListado2">Mostrar dietas</button>
-        <button type="button" class="btn btn-primary btn-lg botonFormulario" id="botonListado3">Filtrar</button>
+        <button type="button" class="btn btn-primary btn-lg botonFormulario" id="botonListado3">Filtro Clientes</button>
 
       </div>
 
@@ -41,7 +41,18 @@
         </div>
 
 
-        <div id="listado3" class="listado">aaaaa
+        <div id="listado3" class="listado">
+          <div>        
+            <form id="formularioFiltrarDNI" name="formularioFiltrarDNI">
+              <div class="form-group">
+                <label for="dni">DNI</label>
+                <input type="text" class="form-control" id="buscarPorDNI" name="DNI">
+                <small id="buscarPorDNI" class="form-text text-muted">Escriba el DNI del Cliente a mostrar.</small>
+              </div>
+              <input type="button" id="btnBuscarFiltroDNI" name="btnBuscarFiltroDNI" class="btn btn-info" value="Buscar" />
+            </form> 
+      
+          </div>
         </div>
    
       </div>
